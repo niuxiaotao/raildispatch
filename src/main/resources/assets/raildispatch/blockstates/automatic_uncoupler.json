@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "raildispatch:block/automatic_uncoupler" }
+  }
+}

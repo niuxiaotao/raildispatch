@@ -1,0 +1,91 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="MIT"
+issueTrackerURL="https://example.invalid/raildispatch/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="${mod_authors}"
+description='''
+${mod_description}
+
+Physics-vehicle (Create: Aeronautics / Simurail) automation modelled on Create's train network:
+- Physics Cab: takes a vanilla Create train schedule, reads Create train signals and stops/moves accordingly,
+  and asks the ground layer (dispatch centre or the switches themselves) for a route.
+- Autopilot Console: give it a station, address plate or vehicle tag as a destination and it plans a route
+  over the Create track graph, follows that route node by node, re-throws the switches ahead of itself,
+  obeys signals and holds speed with a PID loop. It can also execute a Create Train Schedule installed in
+  its slot, following that schedule's destinations, timed waits and cyclic flag. Station-to-station routing is a faithful port of Create's
+  own path search (frontier, penalties, switch/signal legality, station approach); address plates and
+  vehicle tags use a geometric fallback. It is a one-direction console: it drives away from its screen face
+  and has no reverse channel, so bidirectional working is one console at each end. Traction and the parking
+  brake leave through Drive By Wire channels, so no part of this mod reaches into a bogie's internals.
+- Vehicle Tag: names a vehicle so schedules can address it (e.g. "couple this vehicle").
+- Address Tag: marks a shunting destination so hump yards can sort vehicles by destination.
+
+The controller output is published on Drive By Wire channels, so that mod is a hard dependency: both
+control blocks implement its channel interface, which is how the wire tool can select "forward" and
+"brake" (and the cab's own "backward") on them.
+
+Requires Simurail, because that is where physics bogies and the automatic couplers live; without them
+there is nothing for a cab to drive.
+'''
+
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="${neo_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="create"
+    type="required"
+    versionRange="${create_version_range}"
+    ordering="AFTER"
+    side="BOTH"
+
+# Physics bogies and automatic couplers. Required: the cab drives bogies, the schedule's
+# "couple vehicle" entry uses a coupler, and both are only found inside Simurail.
+[[dependencies.${mod_id}]]
+    modId="simurail"
+    type="required"
+    versionRange="${simurail_version_range}"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="sable"
+    type="required"
+    versionRange="${sable_version_range}"
+    ordering="AFTER"
+    side="BOTH"
+
+# Traction, reverse and braking leave through named Drive By Wire channels. Both control blocks
+# implement MultiChannelWireSource, so the class cannot even be loaded without this mod - it is
+# declared here rather than left to fail later with a NoClassDefFoundError.
+[[dependencies.${mod_id}]]
+    modId="drivebywire"
+    type="required"
+    versionRange="${drivebywire_version_range}"
+    ordering="AFTER"
+    side="BOTH"
+
+# Track switches. Create itself has no switch block - they live in Create: Railways - so this is a
+# soft dependency: with it the dispatch centre can throw switches, without it routes are still
+# planned and locked, and signals are still obeyed.
+[[dependencies.${mod_id}]]
+    modId="railways"
+    type="optional"
+    versionRange="${railways_version_range}"
+    ordering="AFTER"
+    side="BOTH"

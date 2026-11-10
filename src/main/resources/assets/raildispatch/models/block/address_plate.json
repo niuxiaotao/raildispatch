@@ -1,0 +1,21 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "raildispatch:block/address_plate",
+    "all": "raildispatch:block/address_plate"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 2, 16],
+      "faces": {
+        "up": { "texture": "#all", "uv": [0, 0, 16, 16] },
+        "down": { "texture": "#all", "uv": [0, 0, 16, 16] },
+        "north": { "texture": "#all", "uv": [0, 14, 16, 16] },
+        "south": { "texture": "#all", "uv": [0, 14, 16, 16] },
+        "west": { "texture": "#all", "uv": [0, 14, 16, 16] },
+        "east": { "texture": "#all", "uv": [0, 14, 16, 16] }
+      }
+    }
+  ]
+}

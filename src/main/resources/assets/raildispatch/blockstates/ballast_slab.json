@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "type=bottom,waterlogged=false": {
+      "model": "raildispatch:block/ballast_slab"
+    },
+    "type=bottom,waterlogged=true": {
+      "model": "raildispatch:block/ballast_slab"
+    },
+    "type=top,waterlogged=false": {
+      "model": "raildispatch:block/ballast_slab_top"
+    },
+    "type=top,waterlogged=true": {
+      "model": "raildispatch:block/ballast_slab_top"
+    },
+    "type=double,waterlogged=false": {
+      "model": "raildispatch:block/ballast_slab_double"
+    },
+    "type=double,waterlogged=true": {
+      "model": "raildispatch:block/ballast_slab_double"
+    }
+  }
+}

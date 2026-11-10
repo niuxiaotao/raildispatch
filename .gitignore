@@ -1,0 +1,33 @@
+# Build output. tools/build-offline.ps1 writes build/ by default and build-<name>/ when it is given
+# -BuildName, which is how two people can compile the same sources side by side.
+build/
+build-*/
+_build_probe/
+
+# Scratch produced by the reconnaissance passes. The reports worth keeping live in _recon/*.md; the
+# raw dumps and extracted jars are reproducible from the Minecraft instance at any time.
+_recon/extract/
+_recon/aero_bundle/
+_recon/sable_bundle/
+_recon/raw/
+_recon/dbw/
+_recon/nested/
+_recon/*.txt
+_recon/*.jar
+
+# Old packaging leftovers and runtime output. The real resources are under src/main/resources.
+/assets/
+/META-INF/
+/logs/
+
+# Anything dropped in here is picked up by the build classpath, so it is usually a local jar that
+# should not be committed.
+libs/*.jar
+
+# Editors and OS noise.
+.idea/
+.vscode/
+*.iml
+*.log
+Thumbs.db
+desktop.ini

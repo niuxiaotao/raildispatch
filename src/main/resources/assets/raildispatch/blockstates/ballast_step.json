@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "raildispatch:block/ballast_step"
+    }
+  }
+}

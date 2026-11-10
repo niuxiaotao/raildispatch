@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,powered=false": { "model": "raildispatch:block/physics_cab" },
+    "facing=east,powered=false":  { "model": "raildispatch:block/physics_cab", "y": 90 },
+    "facing=south,powered=false": { "model": "raildispatch:block/physics_cab", "y": 180 },
+    "facing=west,powered=false":  { "model": "raildispatch:block/physics_cab", "y": 270 },
+    "facing=north,powered=true":  { "model": "raildispatch:block/physics_cab_on" },
+    "facing=east,powered=true":   { "model": "raildispatch:block/physics_cab_on", "y": 90 },
+    "facing=south,powered=true":  { "model": "raildispatch:block/physics_cab_on", "y": 180 },
+    "facing=west,powered=true":   { "model": "raildispatch:block/physics_cab_on", "y": 270 }
+  }
+}

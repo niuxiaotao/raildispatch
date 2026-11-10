@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "raildispatch:ballast",
+    "raildispatch:ballast_stairs",
+    "raildispatch:ballast_slab",
+    "raildispatch:ballast_step"
+  ]
+}
